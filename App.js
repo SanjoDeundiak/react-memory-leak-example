@@ -26,18 +26,17 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const bigString = 'x'.repeat(100*1024*1024)
-
 class App extends React.Component {
   state = {
     result1: "NULL",
     result2: "NULL",
     result3: "NULL",
+    result4: "NULL",
   };
 
   callNativeMethod1 = () => {
     var proxyTest = NativeModules.ProxyTest;
-    var result = proxyTest.callNativeMethodWithArgument(bigString)
+    var result = proxyTest.callNativeMethodDataSync()
     this.setState({
         result1: result,
      })
@@ -45,21 +44,29 @@ class App extends React.Component {
 
   callNativeMethod2 = () => {
     var proxyTest = NativeModules.ProxyTest;
-    proxyTest.callNativeMethodCallbackWithArgument(bigString, (error, result) => {
+    var result = proxyTest.callNativeMethodStringSync()
+    this.setState({
+        result2: result,
+     })
+  }
+
+  callNativeMethod3 = () => {
+    var proxyTest = NativeModules.ProxyTest;
+    proxyTest.callNativeMethodCallbackWithCallback((error, result) => {
       this.setState({
-          result2: result,
+          result3: result,
        })
     })
   }
 
-  callNativeMethod3 = async () => {
+  callNativeMethod4 = async () => {
     var proxyTest = NativeModules.ProxyTest;
 
     try {
-      var result = await proxyTest.callNativeMethodPromise(bigString)
+      var result = await proxyTest.callNativeMethodPromise()
 
       this.setState({
-        result3: result,
+        result4: result,
       })
     } catch (e) {
       console.error(e);
@@ -88,6 +95,12 @@ class App extends React.Component {
           </View>
           <Text>
             {this.state.result3}
+          </Text>
+          <View style={styles.buttonContainer}>
+            <Button title="Run4" onPress={this.callNativeMethod4} />
+          </View>
+          <Text>
+            {this.state.result4}
           </Text>
         </SafeAreaView>
       </Fragment>
