@@ -23,4 +23,25 @@ RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeMethodWithArgument:(NSString *
   return result;
 }
 
+//RCT_EXPORT_METHOD(callNativeMethodCallbackWithArgument:(NSString *)argument
+//                  callback:(RCTResponseSenderBlock)callback)
+//{
+//  RENSomeNativeClass *nativeClass = [[RENSomeNativeClass alloc] init];
+//  
+//  NSString *result = [nativeClass someMethodWithString:argument];
+//  
+//  callback(@[[NSNull null], result]);
+//}
+//
+//RCT_REMAP_METHOD(callNativeMethodPromise,
+//                 callNativeMethodPromiseWithArgument:(NSString *)argument
+//                 resolver:(RCTPromiseResolveBlock)resolve
+//                 rejecter:(RCTPromiseRejectBlock)reject)
+//{
+//  RENSomeNativeClass *nativeClass = [[RENSomeNativeClass alloc] init];
+//  
+//  NSString *result = [nativeClass someMethodWithString:argument];
+//  resolve(result);
+//}
+
 @end

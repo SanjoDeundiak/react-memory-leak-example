@@ -30,13 +30,40 @@ const bigString = 'x'.repeat(100*1024*1024)
 
 class App extends React.Component {
   state = {
-    result: "NULL",
+    result1: "NULL",
+    result2: "NULL",
+    result3: "NULL",
   };
 
-  callNativeMethod = () => {
+  callNativeMethod1 = () => {
     var proxyTest = NativeModules.ProxyTest;
     var result = proxyTest.callNativeMethodWithArgument(bigString)
-    this.setState({ result: result })
+    this.setState({
+        result1: result,
+     })
+  }
+
+  callNativeMethod2 = () => {
+    var proxyTest = NativeModules.ProxyTest;
+    proxyTest.callNativeMethodCallbackWithArgument(bigString, (error, result) => {
+      this.setState({
+          result2: result,
+       })
+    })
+  }
+
+  callNativeMethod3 = async () => {
+    var proxyTest = NativeModules.ProxyTest;
+
+    try {
+      var result = await proxyTest.callNativeMethodPromise(bigString)
+
+      this.setState({
+        result3: result,
+      })
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   render() {
@@ -45,10 +72,22 @@ class App extends React.Component {
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
           <View style={styles.buttonContainer}>
-            <Button title="Run" onPress={this.callNativeMethod} />
+            <Button title="Run1" onPress={this.callNativeMethod1} />
           </View>
           <Text>
-            {this.state.result}
+            {this.state.result1}
+          </Text>
+          <View style={styles.buttonContainer}>
+            <Button title="Run2" onPress={this.callNativeMethod2} />
+          </View>
+          <Text>
+            {this.state.result2}
+          </Text>
+          <View style={styles.buttonContainer}>
+            <Button title="Run3" onPress={this.callNativeMethod3} />
+          </View>
+          <Text>
+            {this.state.result3}
           </Text>
         </SafeAreaView>
       </Fragment>
