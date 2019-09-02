@@ -32,11 +32,13 @@ class App extends React.Component {
     result2: "NULL",
     result3: "NULL",
     result4: "NULL",
+    result5: "NULL",
+    result6: "NULL",
   };
 
   callNativeMethod1 = () => {
     var proxyTest = NativeModules.ProxyTest;
-    var result = proxyTest.callNativeMethodDataSync()
+    var result = proxyTest.callNativeSwiftMethodDataSync()
     this.setState({
         result1: result,
      })
@@ -44,7 +46,7 @@ class App extends React.Component {
 
   callNativeMethod2 = () => {
     var proxyTest = NativeModules.ProxyTest;
-    var result = proxyTest.callNativeMethodStringSync()
+    var result = proxyTest.callNativeObjcSwiftProxyMethodDataSync()
     this.setState({
         result2: result,
      })
@@ -52,21 +54,37 @@ class App extends React.Component {
 
   callNativeMethod3 = () => {
     var proxyTest = NativeModules.ProxyTest;
-    proxyTest.callNativeMethodCallbackWithCallback((error, result) => {
+    var result = proxyTest.callNativeObjcMethodDataSync()
+    this.setState({
+        result3: result,
+     })
+  }
+
+  callNativeMethod4 = () => {
+    var proxyTest = NativeModules.ProxyTest;
+    var result = proxyTest.callNativeSwiftMethodStringSync()
+    this.setState({
+        result4: result,
+     })
+  }
+
+  callNativeMethod5 = () => {
+    var proxyTest = NativeModules.ProxyTest;
+    proxyTest.callNativeSwiftMethodCallbackWithCallback((error, result) => {
       this.setState({
-          result3: result,
+          result5: result,
        })
     })
   }
 
-  callNativeMethod4 = async () => {
+  callNativeMethod6 = async () => {
     var proxyTest = NativeModules.ProxyTest;
 
     try {
-      var result = await proxyTest.callNativeMethodPromise()
+      var result = await proxyTest.callNativeSwiftMethodPromise()
 
       this.setState({
-        result4: result,
+        result6: result,
       })
     } catch (e) {
       console.error(e);
@@ -79,28 +97,40 @@ class App extends React.Component {
         <StatusBar barStyle="dark-content" />
         <SafeAreaView>
           <View style={styles.buttonContainer}>
-            <Button title="Run1" onPress={this.callNativeMethod1} />
+            <Button title="Call swift method with Data" onPress={this.callNativeMethod1} />
           </View>
           <Text>
             {this.state.result1}
           </Text>
           <View style={styles.buttonContainer}>
-            <Button title="Run2" onPress={this.callNativeMethod2} />
+            <Button title="Call objective-c method that calls swift method with Data" onPress={this.callNativeMethod2} />
           </View>
           <Text>
             {this.state.result2}
           </Text>
           <View style={styles.buttonContainer}>
-            <Button title="Run3" onPress={this.callNativeMethod3} />
+            <Button title="Call objective-c method with data" onPress={this.callNativeMethod3} />
           </View>
           <Text>
             {this.state.result3}
           </Text>
           <View style={styles.buttonContainer}>
-            <Button title="Run4" onPress={this.callNativeMethod4} />
+            <Button title="Call swift method with string" onPress={this.callNativeMethod4} />
           </View>
           <Text>
             {this.state.result4}
+          </Text>
+          <View style={styles.buttonContainer}>
+            <Button title="Call swift method with callback" onPress={this.callNativeMethod5} />
+          </View>
+          <Text>
+            {this.state.result5}
+          </Text>
+          <View style={styles.buttonContainer}>
+            <Button title="Call swift method with promise" onPress={this.callNativeMethod6} />
+          </View>
+          <Text>
+            {this.state.result6}
           </Text>
         </SafeAreaView>
       </Fragment>

@@ -16,7 +16,8 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ReactTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ReactTestTests.m */; };
 		420B308E23193C990063966D /* RCTProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 420B308D23193C990063966D /* RCTProxyTest.m */; };
-		421C320723196C28009791D5 /* ReactEmptyNativeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421C320623196C28009791D5 /* ReactEmptyNativeFramework.framework */; };
+		4286DDF4231A9B4F004B334F /* SomeSwiftClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4286DDF3231A9B4F004B334F /* SomeSwiftClass.swift */; };
+		4286DDF7231A9C1B004B334F /* SomeObjcClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 4286DDF6231A9C1B004B334F /* SomeObjcClass.m */; };
 		6067C6231F9416F00A82883F /* libPods-ReactTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CC1B9C36096064C2A09BCA /* libPods-ReactTest.a */; };
 		AB344E78BB651C2852346072 /* libPods-ReactTest-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D302B05EEEEEA93DC12BC05 /* libPods-ReactTest-tvOSTests.a */; };
 		F75C8F4AD8F02B0933A10C46 /* libPods-ReactTest-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F75CC3FE30F8EE42B3D5B043 /* libPods-ReactTest-tvOS.a */; };
@@ -53,6 +54,10 @@
 		420B308C23193C990063966D /* RCTProxyTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTProxyTest.h; sourceTree = "<group>"; };
 		420B308D23193C990063966D /* RCTProxyTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTProxyTest.m; sourceTree = "<group>"; };
 		421C320623196C28009791D5 /* ReactEmptyNativeFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactEmptyNativeFramework.framework; path = Carthage/Build/iOS/ReactEmptyNativeFramework.framework; sourceTree = "<group>"; };
+		4286DDF2231A9B4F004B334F /* ReactTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		4286DDF3231A9B4F004B334F /* SomeSwiftClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeSwiftClass.swift; sourceTree = "<group>"; };
+		4286DDF5231A9C1B004B334F /* SomeObjcClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SomeObjcClass.h; sourceTree = "<group>"; };
+		4286DDF6231A9C1B004B334F /* SomeObjcClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeObjcClass.m; sourceTree = "<group>"; };
 		46CC1B9C36096064C2A09BCA /* libPods-ReactTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B02F6943397CB682D61A258 /* Pods-ReactTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactTest.debug.xcconfig"; path = "Target Support Files/Pods-ReactTest/Pods-ReactTest.debug.xcconfig"; sourceTree = "<group>"; };
 		9F40BF3F5DA1EDD631C6D4B4 /* Pods-ReactTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactTest.release.xcconfig"; path = "Target Support Files/Pods-ReactTest/Pods-ReactTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				421C320723196C28009791D5 /* ReactEmptyNativeFramework.framework in Frameworks */,
 				6067C6231F9416F00A82883F /* libPods-ReactTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +126,10 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				420B308C23193C990063966D /* RCTProxyTest.h */,
 				420B308D23193C990063966D /* RCTProxyTest.m */,
+				4286DDF3231A9B4F004B334F /* SomeSwiftClass.swift */,
+				4286DDF2231A9B4F004B334F /* ReactTest-Bridging-Header.h */,
+				4286DDF5231A9C1B004B334F /* SomeObjcClass.h */,
+				4286DDF6231A9C1B004B334F /* SomeObjcClass.m */,
 			);
 			name = ReactTest;
 			sourceTree = "<group>";
@@ -200,7 +208,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				421C320823196C2A009791D5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,6 +266,9 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1030;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -346,24 +356,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		421C320823196C2A009791D5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/ReactEmptyNativeFramework.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		6AB621351727CF1DE34171F9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -476,8 +468,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4286DDF4231A9B4F004B334F /* SomeSwiftClass.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				420B308E23193C990063966D /* RCTProxyTest.m in Sources */,
+				4286DDF7231A9C1B004B334F /* SomeObjcClass.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,13 +521,10 @@
 			baseConfigurationReference = 7B02F6943397CB682D61A258 /* Pods-ReactTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = ReactTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -543,6 +534,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ReactTest;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -552,12 +546,9 @@
 			baseConfigurationReference = 9F40BF3F5DA1EDD631C6D4B4 /* Pods-ReactTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = ReactTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -567,6 +558,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = ReactTest;
+				SWIFT_OBJC_BRIDGING_HEADER = "ReactTest-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

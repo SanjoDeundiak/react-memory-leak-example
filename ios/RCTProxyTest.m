@@ -6,58 +6,81 @@
 //  Copyright © 2019 Facebook. All rights reserved.
 //
 
+#import "SomeObjcClass.h"
 #import "RCTProxyTest.h"
 #import <React/RCTLog.h>
-@import ReactEmptyNativeFramework;
+#import "ReactTest-Swift.h"
 
 @implementation RCTProxyTest
   
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeMethodDataSync)
+RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeSwiftMethodDataSync)
 {
-  RENSomeNativeClass *nativeClass = [[RENSomeNativeClass alloc] init];
-  
   NSData *data = [[NSMutableData alloc] initWithLength:100*1024*1024];
   
-  NSString *result = [nativeClass someMethodWithData:data];
+  SomeSwiftClass *nativeClass = [[SomeSwiftClass alloc] init];
   
-  return result;
+  [nativeClass someFuncWithData:data];
+  
+  return @"TEST";
+}
+
+RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeObjcSwiftProxyMethodDataSync)
+{
+  NSData *data = [[NSMutableData alloc] initWithLength:100*1024*1024];
+  
+  SomeObjcClass *nativeClass = [[SomeObjcClass alloc] init];
+  
+  [nativeClass someFuncSwiftProxyWithData:data];
+  
+  return @"TEST";
+}
+
+RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeObjcMethodDataSync)
+{
+  NSData *data = [[NSMutableData alloc] initWithLength:100*1024*1024];
+  
+  SomeObjcClass *nativeClass = [[SomeObjcClass alloc] init];
+  
+  [nativeClass someFuncWithData:data];
+  
+  return @"TEST";
 }
   
-RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeMethodStringSync)
+RCT_EXPORT_SYNCHRONOUS_TYPED_METHOD(id, callNativeSwiftMethodStringSync)
 {
-  RENSomeNativeClass *nativeClass = [[RENSomeNativeClass alloc] init];
+  SomeSwiftClass *nativeClass = [[SomeSwiftClass alloc] init];
   
   NSString *string = [@"" stringByPaddingToLength:100*1024*1024 withString:@"a" startingAtIndex:0];
   
-  NSString *result = [nativeClass someMethodWithString:string];
+  [nativeClass someFuncWithString:string];
   
-  return result;
+  return @"TEST";
 }
 
-RCT_EXPORT_METHOD(callNativeMethodCallbackWithCallback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(callNativeSwiftMethodCallbackWithCallback:(RCTResponseSenderBlock)callback)
 {
-  RENSomeNativeClass *nativeClass = [[RENSomeNativeClass alloc] init];
+  SomeSwiftClass *nativeClass = [[SomeSwiftClass alloc] init];
   
   NSData *data = [[NSMutableData alloc] initWithLength:100*1024*1024];
   
-  NSString *result = [nativeClass someMethodWithData:data];
+  [nativeClass someFuncWithData:data];
   
-  callback(@[[NSNull null], result]);
+  callback(@[[NSNull null], @"TEST"]);
 }
 
-RCT_REMAP_METHOD(callNativeMethodPromise,
+RCT_REMAP_METHOD(callNativeSwiftMethodPromise,
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject)
 {
-  RENSomeNativeClass *nativeClass = [[RENSomeNativeClass alloc] init];
+  SomeSwiftClass *nativeClass = [[SomeSwiftClass alloc] init];
   
   NSData *data = [[NSMutableData alloc] initWithLength:100*1024*1024];
   
-  NSString *result = [nativeClass someMethodWithData:data];
+  [nativeClass someFuncWithData:data];
   
-  resolve(result);
+  resolve(@"TEST");
 }
 
 @end
